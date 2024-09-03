@@ -29,3 +29,11 @@ class BlogPost(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    @property
+    def author_or_default(self):
+        return self.author.username if self.author else "Anonyme"
+
+    @property
+    def date_or_default(self):
+        return self.created_on.strftime("%d %B %Y") if self.created_on else "N/A"
