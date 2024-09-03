@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from django.urls import reverse_lazy
 
@@ -24,6 +26,7 @@ class BlogHome(ListView):
         return queryset.filter(published=True)
 
 
+@method_decorator(login_required, name='dispatch')
 class BlogPostCreate(CreateView):
     """Create blog post view."""
     model = BlogPost
@@ -31,6 +34,7 @@ class BlogPostCreate(CreateView):
     fields = ['title', 'content',]
 
 
+@method_decorator(login_required, name='dispatch')
 class BlogPostUpdate(UpdateView):
     """Update blog post view."""
     model = BlogPost
@@ -44,6 +48,7 @@ class BlogPostDetail(DetailView):
     context_object_name = "post"
 
 
+@method_decorator(login_required, name='dispatch')
 class BlogPostDelete(DeleteView):
     """Delete blog post view."""
     model = BlogPost
