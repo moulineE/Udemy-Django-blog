@@ -5,6 +5,8 @@ from django.views.generic import ListView, CreateView, UpdateView
 from posts.models import BlogPost
 
 # Create your views here.
+
+
 class BlogHome(ListView):
     """Home page view."""
     model = BlogPost
@@ -19,6 +21,7 @@ class BlogHome(ListView):
         if self.request.user.is_authenticated:
             return queryset
         return queryset.filter(published=True)
+
 
 class BlogPostCreate(CreateView):
     """Create blog post view."""
