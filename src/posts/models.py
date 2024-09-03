@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.template.defaultfilters import slugify
@@ -32,8 +33,14 @@ class BlogPost(models.Model):
 
     @property
     def author_or_default(self):
+        """Return author username or 'Anonyme'."""
         return self.author.username if self.author else "Anonyme"
 
     @property
     def date_or_default(self):
+        """Return created_on date or 'N/A'."""
         return self.created_on.strftime("%d %B %Y") if self.created_on else "N/A"
+
+    def get_absolute_url(self):
+        """Return absolute URL of the object."""
+        return reverse('posts:home')
