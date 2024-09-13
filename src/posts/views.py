@@ -47,6 +47,16 @@ class BlogPostDetail(DetailView):
     model = BlogPost
     context_object_name = "post"
 
+    def get_queryset(self):
+        """
+        Override get_queryset method to filter unpublished posts
+        for anonymous users.
+        """
+        queryset = super().get_queryset()
+        if self.request.user.is_authenticated:
+            return queryset
+        return queryset.filter(published=True)
+
 
 @method_decorator(login_required, name='dispatch')
 class BlogPostDelete(DeleteView):
