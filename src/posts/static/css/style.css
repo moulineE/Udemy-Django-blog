@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import "reset.css";
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: mintcream;
+}
+
+nav {
+    margin: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+#blog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+#blog article {
+    width: 50%;
+    margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+    #blog article {
+        width: 85%;
+    }
+}
+
+.post-title {
+    display: flex;
+    align-items: center;
+}
+
+.post-title h2 {
+    font-size: large;
+    font-weight: 500;
+}
+
+.post-title a {
+    color: steelblue;
+    text-decoration: none;
+    margin-left: .5rem;
+}
+
+.post-title a:last-child {
+    color: red;
+}
+
+.post-title > div {
+    margin-left: auto;
+}
+
+.post-author {
+    margin: .5rem 0;
+}
+
+.post-excerpt {
+    margin-bottom: 1rem;
+}
+
+.post-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.post-detail > h1 {
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+
+}
